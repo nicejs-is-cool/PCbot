@@ -1,0 +1,15 @@
+{
+  "name": "PCbot",
+  "version": "1.0.0",
+  "description": "PCbot for Discord",
+  "main": "index.js",
+  "scripts": {
+    "test": "node Discord.js"
+  },
+  "keywords": [
+  ],
+  "author": "PC",
+  "license": "MIT",
+  "dependencies": {
+  }
+}
