@@ -4,7 +4,7 @@
   "description": "PCbot for Discord",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "node Discord.js"
   },
   "keywords": [
   ],
