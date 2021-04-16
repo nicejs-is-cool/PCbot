@@ -4,7 +4,7 @@
   "description": "PCbot for Discord",
   "main": "index.js",
   "scripts": {
-    "test": "npm install dotenv discord.js newbox-eval socket.io-client querystring node-fetch --save"
+    "test": "node Discord.js"
   },
   "keywords": [
   ],
