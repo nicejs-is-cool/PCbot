@@ -173,7 +173,7 @@ readSaveUsersFile();
 //727608103092224041
 //721286606417297410
 //const he = require("he")
-bot.login(TOKEN);
+bot.login(process.env.TOKEN);
 var cmdrun = false
 bot.on('ready', () => {
     /*  bot.user.setPresence({
