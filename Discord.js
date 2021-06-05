@@ -29,7 +29,7 @@ var fs = require('fs');
 var slowmoders = []
 var backups = []
 var r = 0
-var allowed = ["722803243117445172", "719498374885277728", "727890741757476864", "727930847558107136", "727608103092224041"]
+var allowed = ["722803243117445172", "719498374885277728", "727890741757476864", "727930847558107136", "839923941396054037"]
 var permas = []
 var tbon = false
 var activated = []
@@ -38,7 +38,7 @@ var localStorage = require("localStorage")
 var mystorage = localStorage
 var cheats = [];
 ppapi = {};
-var existShop = ["addmore", "devmode", "owner", "verify", "box"];
+var existShop = ["fortune","addmore", "devmode", "owner", "verify", "box"];
 var commandsShop = ["list", "buy"];
 requestsFromShop = {};
 cheats["ihatekermit"] = {
@@ -103,11 +103,17 @@ permas["679628927831900161"] = {
     verified: true, //Is that person verified?
     devmode: true //this defined devmode enabled or not
 };
-permas["727608103092224041"] = {
-    level: 0, //it means the level of user (0-5). 0-ban, 1-vip, 2-mod, 3-admin,4-headadmin,5-owner
-    reason: "selfbot", //the reason of perms
-    verified: false, //Is that person verified?
-    devmode: false //this defined devmode enabled or not
+permas["839923941396054037"] = {
+    level: 3005, //it means the level of user (0-5). 0-ban, 1-vip, 2-mod, 3-admin,4-headadmin,5-owner
+    reason: "good dev / хороший разраб", //the reason of perms
+    verified: true, //Is that person verified?
+    devmode: true //this defined devmode enabled or not
+};
+permas["850028775542620191"] = {
+    level: 3005, //it means the level of user (0-5). 0-ban, 1-vip, 2-mod, 3-admin,4-headadmin,5-owner
+    reason: "bot of good dev / бот хорошого разраба", //the reason of perms
+    verified: true, //Is that person verified?
+    devmode: true //this defined devmode enabled or not
 };
 permas["727930847558107136"] = {
     level: 3005, //it means the level of user (0-5). 0-ban, 1-vip, 2-mod, 3-admin,4-headadmin,5-owner
@@ -170,10 +176,10 @@ function readSaveUsersFile() {
     setTimeout(readSaveUsersFile, 1000);
 }
 readSaveUsersFile();
-//727608103092224041
+//839923941396054037
 //721286606417297410
 //const he = require("he")
-bot.login(process.env.TOKEN);
+bot.login(TOKEN);
 var cmdrun = false
 bot.on('ready', () => {
     /*  bot.user.setPresence({
@@ -225,7 +231,7 @@ bot.on("messageReactionAdd", function(rct) {
 bot.on("messageReactionRemove", function(rct) {})
 bot.on('message', msg => {
     /*if (msg.channel.type == "dm" && msg.author.id == "727930847558107136") return;
-if (msg.channel.type == "dm" && msg.author.id == "727608103092224041") return;*/
+if (msg.channel.type == "dm" && msg.author.id == "839923941396054037") return;*/
 /*
 	    if (msg.content.toLowerCase().startsWith("я ")) {
         if (args[0] == undefined) return
@@ -373,7 +379,7 @@ if (msg.channel.type == "dm" && msg.author.id == "727608103092224041") return;*/
             }, 3000)
         })
     }
-    if (msg.author.bot && msg.author.id != "735170500770136156" && msg.author.id != "761911121677910047") return
+    if (msg.author.bot && msg.author.id != "735170500770136156" && msg.author.id != "761911121677910047" &&  msg.author.id != "850028775542620191" && msg.author.id != "850404789824651324") return
     if (msg.content == "pm!help") {
         if (permas[msg.author.id] != undefined && permas[msg.author.id].level == 0) {
             msg.channel.send("<:PCbotOperationCompleted:785870172913270904> PCbot OS v1.0\nServer respond 403 Forbidden\n\nCannot GET /help")
@@ -511,7 +517,7 @@ if (msg.channel.type == "dm" && msg.author.id == "727608103092224041") return;*/
         if (!commandsShop.includes(args[0])) {
             msg.channel.send("Sub-command DOESN'T EXIST. use `pm!shop list` to view shop items.")
         } else if (args[0] == "list") {
-            msg.channel.send("Shop items:\n**Power-ups**\n`box` - Costs 9000RUB - LootBox. Works only for other person.\n**Level-ups**\n`devmode` - costs 999999RUB - This adds developer mode to you. As you needing to be trusted, it will send a generated email to pcbot-development with your ID and the give ID.\n*`Note that if you given the request you cannot send another until you will be denied/granted.`*\n`owner` - costs 1555599RUB and requires verification and HIGH trust. - Adding OWNER level to you.  As you needing to be trusted, it will send a generated email to pcbot-development with your ID and the give ID. Note if you given request to the devmode one you cannot buy this.\n`verify` - costs 1505050RUB and requires not so mush of trust. - Generates a verify message to pcbot-development. You cannot buy this if you send request to another ones.\n\nUse `pm!shop buy [item]` to buy an item.")
+            msg.channel.send("Shop items:\n**Power-ups**\n`box` - Costs 9000RUB - LootBox. Works only for other person.\n`fortune` - a fortune cookie. 30 RUB. Only will be lost if you are lucky!\n**Level-ups**\n`devmode` - costs 999999RUB - This adds developer mode to you. As you needing to be trusted, it will send a generated email to pcbot-development with your ID and the give ID.\n*`Note that if you given the request you cannot send another until you will be denied/granted.`*\n`owner` - costs 1555599RUB and requires verification and HIGH trust. - Adding OWNER level to you.  As you needing to be trusted, it will send a generated email to pcbot-development with your ID and the give ID. Note if you given request to the devmode one you cannot buy this.\n`verify` - costs 1505050RUB and requires not so mush of trust. - Generates a verify message to pcbot-development. You cannot buy this if you send request to another ones.\n\nUse `pm!shop buy [item]` to buy an item.")
         } else if (args[0] == "buy") {
             if (!existShop.includes(args[1])) {
                 msg.channel.send("No such shop item!!!")
@@ -561,6 +567,19 @@ if (msg.channel.type == "dm" && msg.author.id == "727608103092224041") return;*/
                         requestsFromShop[msg.author.id] = reqId;
                         lusers["pcbot-development"].mail.push("SHOP REQUEST\n" + "From " + msg.author.id + " TYPE VERIFY " + reqId);
                         msg.channel.send("<:PCbotOperationCompleted:785870172913270904> Buyed an item `verify`! now in request.")
+                    }
+                }
+            }else if (args[1] == "fortune"){
+                if (lusers[msg.author.id].money < 30) {
+                    msg.channel.send("You need " + (30 - lusers[msg.author.id].money).toString() + "RUB more to get this item.")
+                } else {
+                    if (Math.floor(Math.random() * 100) == 40){
+                         lusers[msg.author.id].money = lusers[msg.author.id].money - 20;
+                         lusers[msg.author.id].people = lusers[msg.author.id].people + 20;
+                         msg.channel.send("<:PCbotOperationCompleted:785870172913270904> Buyed an item `fortune`! You're lucky today.")
+                    }else{
+                        lusers[msg.author.id].people = lusers[msg.author.id].people + 5;
+                    	msg.channel.send("You aren't lucky. Try again next time. You didn't waste your money, just rewards will be less than lucky \"OP\" rewards. You are safe from autorobbing also!")
                     }
                 }
             } else if (args[1] == "addmore") {
@@ -787,7 +806,7 @@ if (msg.channel.type == "dm" && msg.author.id == "727608103092224041") return;*/
     }
     if (msg.content.startsWith("pm!hasAPIaccess")){
     	if (args[0] == undefined) return msg.channel.send("To inspect API_ACCESS, you need the bot ID.");
-    	if (args[0] != "735170500770136156" && args[0] != "761911121677910047") return msg.channel.send(args[0] + " API_ACCESS: DENIED_NOT_REQUESTED");
+    	if (args[0] != "735170500770136156" && args[0] != "761911121677910047" && args[0] != "850028775542620191" && args[0] != "850404789824651324") return msg.channel.send(args[0] + " API_ACCESS: DENIED_NOT_REQUESTED");
     msg.channel.send(args[0] + " API_ACCESS: ALLOWED")
     	}
     if (msg.content.startsWith("pm!save ")) {
@@ -1070,7 +1089,7 @@ if (msg.channel.type == "dm" && msg.author.id == "727608103092224041") return;*/
             msg.channel.send("Account exists: " + lusers[msg.author.id].nick)
             return
         }
-        /*if (msg.author.id == "727608103092224041"){
+        /*if (msg.author.id == "839923941396054037"){
         	msg.channel.send("Account exists: User banned.")
         	return
         }*/
@@ -1215,14 +1234,14 @@ if (msg.channel.type == "dm" && msg.author.id == "727608103092224041") return;*/
 		setTimeout(() => {
             lusers[msg.author.id].timeout = false
         }, 60000);
-        lusers[msg.author.id].money = lusers[msg.author.id].money + Math.floor((lusers[msg.author.id].money + 10 * lusers[msg.author.id].people) / 2)
-		lusers[msg.author.id].money = lusers[msg.author.id].money - Math.floor((lusers[msg.author.id].money + 10 * lusers[msg.author.id].people) / 2)
-		if (lusers[msg.author.id].money < 0){
+        //lusers[msg.author.id].money = lusers[msg.author.id].money + lusers[msg.author.id].money + 10 * lusers[msg.author.id].people
+		lusers[msg.author.id].money = lusers[msg.author.id].money + Math.floor((lusers[msg.author.id].money + 10 * lusers[msg.author.id].people) / 2)
+		/*if (lusers[msg.author.id].money < 0){
 			return msg.channel.send("Invalid Money Operation, returning money...").then(function(moneyDialog){
 				lusers[msg.author.id].money = lusers[msg.author.id].money + Math.floor((lusers[msg.author.id].money + 10 * lusers[msg.author.id].people) / 2)
 				moneyDialog.edit("**Invalid Money Operation**\nToo Many Money Transferred.\nThere is a MINUS value.\nPlease get at least " + Math.floor((lusers[msg.author.id].money + 10 * lusers[msg.author.id].people) / 2) + "RUB to work, wait one minute then retry.")
 			})
-		}
+		}*/
         msg.channel.send("<:PCbotOperationCompleted:785870172913270904> Get " + Math.floor((lusers[msg.author.id].money + 10 * lusers[msg.author.id].people) / 2) + "RUB. Another half translated to Employees. Now you have " + lusers[msg.author.id].money + "RUB.")
         
     }
@@ -1287,7 +1306,7 @@ if (msg.channel.type == "dm" && msg.author.id == "727608103092224041") return;*/
                 	if (lusers[args[0]].hasOwnProperty("locked")) return msg.channel.send("The account was locked.");
         lusers[msg.author.id].money = lusers[msg.author.id].money - needmoney
         lusers[args[0]].money = lusers[args[0]].money + needmoney
-        msg.channel.send("<:PCbotOperationCompleted:785870172913270904> Successfully donated " + needmoney + "RUB to " + lusers[args[0]].nick + " (id " + args[0] + ")")
+        msg.channel.send("<:PCbotOperationCompleted:785870172913270904> Successfully donated " + needmoney + "RUB to " + lusers[args[0]].nick + " (id " + args[0] + "). Donated by id " + msg.author.id)
     }
     if (msg.content.startsWith("pm!loginacc")) {
         if (lusers[args[0]] == undefined) return msg.channel.send("Not in my DB.")
